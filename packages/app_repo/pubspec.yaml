@@ -1,0 +1,21 @@
+name: app_repo
+description: A repository to handle application authentication.
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.19.0 <3.0.0"
+
+dependencies:
+  equatable: ^2.0.5
+  local_data_source:
+    path: ../local_data_source
+  network_api:
+    path: ../network_api
+  pay_net_api:
+    path: ../pay_net_api
+
+dev_dependencies:
+  mocktail: ^0.3.0
+  test: ^1.23.1
+  very_good_analysis: ^4.0.0+1

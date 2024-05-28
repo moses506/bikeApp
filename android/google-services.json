@@ -1,0 +1,98 @@
+{
+    "project_info": {
+      "project_number": "217143456178",
+      "project_id": "unka-go",
+      "storage_bucket": "unka-go.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:217143456178:android:56cf7b625f797dcb01b4ab",
+          "android_client_info": {
+            "package_name": "com.probase.unka"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "217143456178-dv1hbua6504srv28e9ok7iivpcjhpvaf.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyCgZ6yQHyN3zONWhbRgdoA-LtKyBlIw9Vw"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "217143456178-dv1hbua6504srv28e9ok7iivpcjhpvaf.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "217143456178-280vir8ud3a9g1amu82ucm4i0i300jj2.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.probase.unka.driver"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:217143456178:android:ebf8ce3e7a4b271201b4ab",
+          "android_client_info": {
+            "package_name": "com.probase.unka.driver"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "217143456178-jpsnbpad1gq233rffcssmqjg1ubggm2d.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.probase.unka.driver",
+              "certificate_hash": "85c14dfa22424e0f5803f5acf145fbda3658dfa4"
+            }
+          },
+          {
+            "client_id": "217143456178-s1be1k5mfkjp3nbusqnvuv87jdu8t2be.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.probase.unka.driver",
+              "certificate_hash": "7c1f2b257db928607791db2500d6186dcfae4afe"
+            }
+          },
+          {
+            "client_id": "217143456178-dv1hbua6504srv28e9ok7iivpcjhpvaf.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyCgZ6yQHyN3zONWhbRgdoA-LtKyBlIw9Vw"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "217143456178-dv1hbua6504srv28e9ok7iivpcjhpvaf.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "217143456178-280vir8ud3a9g1amu82ucm4i0i300jj2.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.probase.unka.driver"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }
