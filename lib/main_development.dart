@@ -19,7 +19,7 @@ class MyHttpOverrides extends HttpOverrides {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  ByteData data =
+  final data =
       await PlatformAssetBundle().load('assets/lets-encrypt-r3.pem');
   SecurityContext.defaultContext
       .setTrustedCertificatesBytes(data.buffer.asUint8List());

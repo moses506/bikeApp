@@ -46,7 +46,7 @@ class HomeBody extends StatelessWidget {
                       onTap: () {
                         Navigator.pop(context); // Dismiss the bottom sheet
                       },
-                      child: QRScanner(),
+                      child: const QRScanner(),
                     );
                   },);
             },
@@ -101,9 +101,6 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
         : Theme.of(context).colorScheme.onSurfaceVariant;
   }
 
-  FontWeight _getFontWeightForIndex(int index) {
-    return widget.currentIndex == index ? FontWeight.w700 : FontWeight.w400;
-  }
    double _getSize(int index){
     return widget.currentIndex== index ?  34: 30;
    }
@@ -126,17 +123,17 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset(
-                  AppIcons.home,
-                  width: 25,
-                  colorFilter: ColorFilter.mode(
-                    _getColorForIndex(0),
-                    BlendMode.srcIn,
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
+                // SvgPicture.asset(
+                //   AppIcons.home,
+                //   width: 25,
+                //   colorFilter: ColorFilter.mode(
+                //     _getColorForIndex(0),
+                //     BlendMode.srcIn,
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 5,
+                // ),
                 Icon(Icons.home, size: _getSize(0),
                     color: _getColorForIndex(0),),],
             ),
@@ -163,14 +160,14 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset(
-                  AppIcons.history,
-                  width: 25,
-                  colorFilter: ColorFilter.mode(
-                    _getColorForIndex(2),
-                    BlendMode.srcIn,
-                  ),
-                ),
+                // SvgPicture.asset(
+                //   AppIcons.history,
+                //   width: 25,
+                //   colorFilter: ColorFilter.mode(
+                //     _getColorForIndex(2),
+                //     BlendMode.srcIn,
+                //   ),
+                // ),
                 const SizedBox(
                   height: 5,
                 ),
