@@ -1,28 +1,19 @@
-import 'package:bicycle_app/dashboard/widgets/f.dart';
 import 'package:bicycle_app/home/widgets/qr_code.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-
-
-
-                        
 
 class SearchPlace extends StatefulWidget {
   const SearchPlace({super.key});
 
   @override
-  _SearchPlaceState createState() => _SearchPlaceState();
+  SearchPlaceState createState() => SearchPlaceState();
 }
 
-class _SearchPlaceState extends State<SearchPlace> {
+class SearchPlaceState extends State<SearchPlace> {
   final TextEditingController _controller = TextEditingController();
   bool _isBooking = false;
 
-
- 
   Future<void> _initiateFakeBooking() async {
     setState(() {
       _isBooking = true;
@@ -42,20 +33,20 @@ class _SearchPlaceState extends State<SearchPlace> {
       ),
     );
     await Navigator.push(
-    context,
-    MaterialPageRoute<dynamic>(
-      builder: (context) => const QRScanner(
-        // startPoint:LatLng(37.7749, -122.4194),
-        // endPoint: LatLng(34.0522, -118.2437), 
-        ),
-    ),
-  );
+      context,
+      MaterialPageRoute<dynamic>(
+        builder: (context) => const QRScanner(
+            // startPoint:LatLng(37.7749, -122.4194),
+            // endPoint: LatLng(34.0522, -118.2437),
+            ),
+      ),
+    );
   }
-Future<void> _getCurrentLocation() async {
+
+  Future<void> _getCurrentLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
 
-    
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
@@ -100,7 +91,6 @@ Future<void> _getCurrentLocation() async {
     setState(() {
       _controller.text = address;
     });
-
   }
 
   @override
@@ -170,18 +160,23 @@ Future<void> _getCurrentLocation() async {
               leading: Icon(Icons.replay_outlined),
             ),
             FilledButton(
-            style: FilledButton.styleFrom(
-                        minimumSize: const Size.fromHeight(48),
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                      
+              style: FilledButton.styleFrom(
+                minimumSize: const Size.fromHeight(48),
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+              ),
               onPressed: _isBooking ? null : _initiateFakeBooking,
               child: _isBooking
-                  ?const CircularProgressIndicator() // Show loading indicator
-                  : const Text('Proceed', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),),
+                  ? const CircularProgressIndicator() // Show loading indicator
+                  : const Text(
+                      'Proceed',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,),
+                    ),
             ),
           ],
         ),
@@ -193,5 +188,5 @@ Future<void> _getCurrentLocation() async {
 void main() {
   runApp(const MaterialApp(
     home: SearchPlace(),
-  ));
+  ),);
 }

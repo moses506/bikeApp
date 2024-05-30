@@ -1,8 +1,10 @@
 import 'dart:developer';
 
+import 'package:bicycle_app/home/widgets/trip_details.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 
 class QRScanner extends StatefulWidget {
   const QRScanner({super.key});
@@ -160,9 +162,10 @@ class QRScannerState extends State<QRScanner> {
   }
 }
 
+
+
 class MapScreen extends StatelessWidget {
-  const MapScreen(
-      {required this.startPoint, required this.endPoint, super.key});
+  const MapScreen({required this.startPoint, required this.endPoint, Key? key}) : super(key: key);
   final LatLng startPoint;
   final LatLng endPoint;
 
@@ -173,10 +176,9 @@ class MapScreen extends StatelessWidget {
       Marker(markerId: const MarkerId('endPoint'), position: endPoint),
     };
 
-    // Define the route as a list of LatLng points
     final route = <LatLng>[
       startPoint,
-      const LatLng(-15.41407929850562, 28.28619003953091), // Intermediate point (example)
+      const LatLng(-15.41407929850562, 28.28619003953091),
       endPoint,
     ];
 
@@ -189,13 +191,74 @@ class MapScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Map'),
+        title: const Text('Current Trip'),
       ),
-      body: GoogleMap(
-        initialCameraPosition: CameraPosition(target: startPoint, zoom: 12),
-        markers: markers,
-        polylines: {routePolyline},
+      body: Stack(
+        children: [
+          GoogleMap(
+            initialCameraPosition: CameraPosition(target: startPoint, zoom: 12),
+            markers: markers,
+            polylines: {routePolyline},
+          ),
+          Positioned(
+            bottom: 20,
+            left: 10,
+            right: 10,
+            child: SlideAction(
+              text: 'Slide to Complete Trip',
+              onSubmit: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<dynamic>(
+                    builder: (context) => TripDetailsScreen(),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
 }
+
+
+// class MapScreen extends StatelessWidget {
+//   const MapScreen(
+//       {required this.startPoint, required this.endPoint, super.key});
+//   final LatLng startPoint;
+//   final LatLng endPoint;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final markers = <Marker>{
+//       Marker(markerId: const MarkerId('startPoint'), position: startPoint),
+//       Marker(markerId: const MarkerId('endPoint'), position: endPoint),
+//     };
+
+//     // Define the route as a list of LatLng points
+//     final route = <LatLng>[
+//       startPoint,
+//       const LatLng(-15.41407929850562, 28.28619003953091), // Intermediate point (example)
+//       endPoint,
+//     ];
+
+//     final routePolyline = Polyline(
+//       polylineId: const PolylineId('route'),
+//       points: route,
+//       color: Colors.blue,
+//       width: 5,
+//     );
+
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Current Trip'),
+//       ),
+//       body: GoogleMap(
+//         initialCameraPosition: CameraPosition(target: startPoint, zoom: 12),
+//         markers: markers,
+//         polylines: {routePolyline},
+//       ),
+//     );
+//   }
+// }

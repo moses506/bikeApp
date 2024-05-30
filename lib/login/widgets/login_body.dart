@@ -272,7 +272,7 @@ class _LoginBodyState extends State<LoginBody> {
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 17),
+                        fontSize: 17,),
                     ),
             ),
           ],
