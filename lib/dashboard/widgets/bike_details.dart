@@ -87,11 +87,12 @@ class BikeDetails extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              loremIpsum(words: 30),
-              style: const TextStyle(fontSize: 16),
+              // loremIpsum(words: 30),
+              '''Experience the ultimate ride with our state-of-the-art urban bicycle, designed for both comfort and efficiency. This sleek bike features a lightweight aluminum frame, making it easy to maneuver through city streets and park paths. Equipped with a 21-speed Shimano gear system, you can effortlessly switch gears to tackle any terrain, whether you're climbing hills or cruising on flat surfaces. The bike also boasts puncture-resistant tires and a front suspension fork to ensure a smooth ride even on rough roads. For added convenience and safety, it includes front and rear LED lights, a bell, and a sturdy lock.''',
+              style: TextStyle(fontSize: 16),
             ),
           ),
           const SizedBox(
@@ -252,7 +253,7 @@ class BikeDetails extends StatelessWidget {
           children: <Widget>[
             GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute<dynamic>(builder: (J)=>SearchPlace()));
+                Navigator.push(context, MaterialPageRoute<dynamic>(builder: (J)=>const SearchPlace()));
               },
               child: Container(
                 height: 40,

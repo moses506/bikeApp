@@ -120,7 +120,7 @@ class _LoginBodyState extends State<LoginBody> {
             const SizedBox(height: 8),
             const Center(
               child: Text(
-                'Welcome back, please login your account',
+                'Welcome back, please login to your account',
                 style: TextStyle(color: Colors.grey, fontSize: 14),
               ),
             ),
@@ -205,7 +205,7 @@ class _LoginBodyState extends State<LoginBody> {
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    '''By Continuing You agree the terms and conditions of the Pedle Ride''',
+                    '''By Continuing You agree to the terms and conditions of Peddle Share''',
                     overflow: TextOverflow.clip,
                     style: TextStyle(color: Colors.grey),
                   ),
@@ -215,7 +215,7 @@ class _LoginBodyState extends State<LoginBody> {
             const SizedBox(height: 10),
             Row(
               children: [
-                const Text('''You don\'t have an account? '''),
+                const Text('You don\'t have an account? '),
                 TextButton(
                   onPressed: () {},
                   child: const Text('Register'),
@@ -272,7 +272,8 @@ class _LoginBodyState extends State<LoginBody> {
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 17,),
+                        fontSize: 17,
+                      ),
                     ),
             ),
           ],
