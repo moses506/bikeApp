@@ -1,11 +1,11 @@
+import 'package:bicycle_app/home/home.dart';
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_picker_dialog.dart';
 import 'package:country_pickers/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:bicycle_app/home/home.dart';
 
 class LoginBody extends StatefulWidget {
-  const LoginBody({Key? key}) : super(key: key);
+  const LoginBody({super.key});
 
   @override
   State<LoginBody> createState() => _LoginBodyState();
@@ -25,8 +25,8 @@ class _LoginBodyState extends State<LoginBody> {
 
   @override
   void dispose() {
-    _username.removeListener(_validatePhoneNumber);
-    _username.dispose();
+    _username..removeListener(_validatePhoneNumber)
+    ..dispose();
     super.dispose();
   }
 
@@ -35,7 +35,7 @@ class _LoginBodyState extends State<LoginBody> {
   }
 
   Future<void> _openCountryPickerDialog() async {
-    final Country? country = await showDialog<Country>(
+    final country = await showDialog<Country>(
       context: context,
       builder: (_) => Theme(
         data: Theme.of(context).copyWith(
@@ -51,7 +51,7 @@ class _LoginBodyState extends State<LoginBody> {
           itemBuilder: (Country country) => Row(
             children: <Widget>[
               CountryPickerUtils.getDefaultFlagImage(country),
-              const SizedBox(width: 8.0),
+              const SizedBox(width: 8),
               Flexible(
                 child: Text(
                   '${country.name} (+${country.phoneCode})',
@@ -88,10 +88,10 @@ class _LoginBodyState extends State<LoginBody> {
     }
   }
 
-  bool get isPhoneNumberValid {
-    final phoneNumber = _username.text;
-    return phoneNumber.length == 9 && RegExp(r'^\d{9}$').hasMatch(phoneNumber);
-  }
+  // bool get isPhoneNumberValid {
+  //   final phoneNumber = _username.text;
+  //   return phoneNumber.length == 9 && RegExp(r'^\d{9}$').hasMatch(phoneNumber);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -189,9 +189,8 @@ class _LoginBodyState extends State<LoginBody> {
                   validator: (text) {
                     if (text == null || text.isEmpty) {
                       return 'Phone number is required';
-                    } else if (!isPhoneNumberValid) {
-                      return 'Phone number must be 9 digits';
                     }
+                    
                     return null;
                   },
                 ),
@@ -215,7 +214,7 @@ class _LoginBodyState extends State<LoginBody> {
             const SizedBox(height: 10),
             Row(
               children: [
-                const Text('You don\'t have an account? '),
+                const Text('''You don't have an account? '''),
                 TextButton(
                   onPressed: () {},
                   child: const Text('Register'),
@@ -231,7 +230,7 @@ class _LoginBodyState extends State<LoginBody> {
                   borderRadius: BorderRadius.circular(5),
                 ),
               ),
-              onPressed: _isLoading || !isPhoneNumberValid
+              onPressed: _isLoading
                   ? null
                   : () {
                       if (formKey.currentState?.validate() ?? false) {
