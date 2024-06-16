@@ -48,17 +48,18 @@ CREATE TABLE totalTransactions(id INTEGER PRIMARY KEY, total_count INTEGER, tota
 const migrations = <String>[];
 
 const kDevConfig = Config(
-  baseUrl: 'http://89.58.48.159:5051/api/',
+  baseUrl: 'https://172.20.10.2:6080/api/',
+
   dbName: 'paykesho.dev.db',
-  host: '89.58.48.159:5051',
+  host: '172.20.10.2:6080',
   initScript: initScript,
   // migrations: migrations,
 );
 
 const kConfig = Config(
-  baseUrl: 'ttp://89.58.48.159:5051/api/',
+  baseUrl: 'https://172.20.10.2:6080/api/',
   dbName: 'paykesho.dev.db',
-  host: '89.58.48.159:5051',
+  host: '172.20.10.2:6080',
   initScript: initScript,
   // migrations: migrations,
 );
