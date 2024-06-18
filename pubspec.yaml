@@ -63,4 +63,6 @@ flutter:
   assets:
     - assets/
     - assets/isrgrootx1.pem
+    - assets/svg/
+    # - assets/images/
   

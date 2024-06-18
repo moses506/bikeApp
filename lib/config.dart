@@ -3,7 +3,7 @@ import 'package:app_repo/app_repo.dart';
 const initScript = <String>[
   '''
 CREATE TABLE users(id INTEGER PRIMARY KEY, firstName TEXT, lastName TEXT, userId INTEGER, otherName TEXT, dateOfBirth TEXT, 
-meansOfIdentificationType TEXT, title TEXT, gender TEXT, mobileNumber TEXT, emailAddress TEXT
+meansOfIdentificationType TEXT, gender TEXT, mobileNumber TEXT, emailAddress TEXT, meansOfIdentificationNumber TEXT
 
 )
   ''',
@@ -48,18 +48,18 @@ CREATE TABLE totalTransactions(id INTEGER PRIMARY KEY, total_count INTEGER, tota
 const migrations = <String>[];
 
 const kDevConfig = Config(
-  baseUrl: 'https://172.20.10.2:6080/api/',
+  baseUrl: 'https://192.168.43.237:6080/api/',
 
   dbName: 'paykesho.dev.db',
-  host: '172.20.10.2:6080',
+  host: '192.168.43.237:6080',
   initScript: initScript,
   // migrations: migrations,
 );
 
 const kConfig = Config(
-  baseUrl: 'https://172.20.10.2:6080/api/',
+  baseUrl: 'https://192.168.43.237:6080/api/',
   dbName: 'paykesho.dev.db',
-  host: '172.20.10.2:6080',
+  host: '192.168.43.2372:6080',
   initScript: initScript,
   // migrations: migrations,
 );

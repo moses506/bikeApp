@@ -9,7 +9,6 @@ class User extends Equatable {
   /// {@macro user}
   const User({
     required this.id,
-    required this.dateOfBirth,
     required this.emailAddress,
     required this.firstName,
     required this.gender,
@@ -17,10 +16,7 @@ class User extends Equatable {
     required this.meansOfIdentificationType,
     required this.mobileNumber,
     required this.otherName,
-    required this.title,
     required this.userId,
-    required this.companyId,
-    required this.loanLimit,
   });
 
   /// Creates a User from Json map
@@ -29,7 +25,6 @@ class User extends Equatable {
   /// Creates a User from Json map
   static const empty = User(
     id: 0,
-    dateOfBirth: '',
     emailAddress: '',
     firstName: '',
     gender: '',
@@ -37,10 +32,7 @@ class User extends Equatable {
     meansOfIdentificationType: '',
     mobileNumber: '',
     otherName: '',
-    title: '',
     userId: 0,
-    companyId: 0,
-    loanLimit: '',
   );
 
   /// A description for id
@@ -55,14 +47,8 @@ class User extends Equatable {
   /// A description for otherName
   final String otherName;
 
-  /// A description for dateOfBirth
-  final String dateOfBirth;
-
   /// A description for meansOfIdentificationType
   final String meansOfIdentificationType;
-
-  /// A description for title
-  final String title;
 
   /// Adescription for gender
   final String gender;
@@ -75,11 +61,9 @@ class User extends Equatable {
 
   ///  A description for userId
   final int userId;
-/// A descrtiption for company_id
-final int companyId;
-/// A decription for loan_limit
-final String loanLimit;
- 
+
+  /// A descrtiption for company_id
+
   /// Creates a copy of the current User with property changes
   User copyWith({
     int? id,
@@ -93,7 +77,6 @@ final String loanLimit;
     String? mobileNumber,
     String? emailAddress,
     int? userId,
-    int? companyId,
     String? loanLimit,
   }) {
     return User(
@@ -102,15 +85,11 @@ final String loanLimit;
       lastName: lastName ?? this.lastName,
       otherName: otherName ?? this.otherName,
       gender: gender ?? this.gender,
-      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-      title: title ?? this.title,
       mobileNumber: mobileNumber ?? this.mobileNumber,
       emailAddress: emailAddress ?? this.emailAddress,
       meansOfIdentificationType:
           meansOfIdentificationType ?? this.meansOfIdentificationType,
       userId: userId ?? this.userId,
-      companyId: companyId?? this.companyId,
-      loanLimit:loanLimit?? this.loanLimit,
     );
   }
 
@@ -121,15 +100,11 @@ final String loanLimit;
         lastName,
         otherName,
         gender,
-        dateOfBirth,
-        title,
         mobileNumber,
         emailAddress,
         meansOfIdentificationType,
         meansOfIdentificationType,
         userId,
-        companyId,
-        loanLimit,
       ];
 
   /// Creates a Json map from a User

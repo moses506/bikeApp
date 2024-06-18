@@ -50,7 +50,6 @@ class NetworkApi implements NetworkSource {
   }
 
   late Dio _client;
-
   Future<void> _init({
     required String baseUrl,
     required String host,
@@ -65,7 +64,10 @@ class NetworkApi implements NetworkSource {
         'Content-Type': 'application/json',
         'Authorization': '$bearer ${token ?? ''}',
       },
-      validateStatus: null, // Disable SSL certificate validation
+      // Adjust connectTimeout to a suitable Duration object (e.g., 30 seconds)
+      connectTimeout: Duration(milliseconds: 30000),
+      // 30 seconds
+      validateStatus: null, // Disable SSL certificate validations
     );
 
     _client = Dio(options);
@@ -78,58 +80,31 @@ class NetworkApi implements NetworkSource {
     };
   }
 
-  // // Future<void> _init({
+  // Future<void> _init({
+  //   required String baseUrl,
+  //   required String host,
+  //   String? token = '',
+  //   String? bearer = 'bearer:', // Corrected spelling from 'baerer' to 'bearer'
+  // }) async {
+  //   final options = BaseOptions(
+  //     baseUrl: baseUrl,
+  //     followRedirects: true,
+  //     receiveDataWhenStatusError: true,
+  //     headers: <String, String>{
+  //       'Content-Type': 'application/json',
+  //       'Authorization': '$bearer ${token ?? ''}',
+  //     },
+  //     validateStatus: null, // Disable SSL certificate validation
+  //   );
 
-  // //   required String baseUrl,
+  //   _client = Dio(options);
 
-  // //   required String host,
-
-  // //   String? token = '',
-
-  // //   String? baerer = 'baerer:',
-
-  // // }) async {
-
-  // //   final options = BaseOptions(
-
-  // //     baseUrl: baseUrl,
-
-  // //     followRedirects: true,
-
-  // //     receiveDataWhenStatusError: true,
-
-  // //     headers: <String, String>{
-
-  // //       'Content-Type': 'application/json',
-
-  // //       'Authorization': '$baerer ${token ?? ''}',
-
-  // //     },
-
-  // //     validateStatus: (status) {
-
-  // //       return (status ?? 501) < 501;
-
-  // //     },
-
-  // //   );
-
-  // //   _client = Dio(options);
-
-  // //   // ignore: deprecated_member_use
-
-  // //   (_client.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
-
-  // //       (HttpClient client) {
-
-  // //     client.badCertificateCallback =
-
-  // //         (X509Certificate cert, String kHost, int port) => kHost == host;
-
-  // //     return client;
-
-  // //   };
-
+  //   (_client.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+  //       (HttpClient client) {
+  //     client.badCertificateCallback =
+  //         (X509Certificate cert, String host, int port) => host == host;
+  //     return client;
+  //   };
   // }
 
   /// Default error message
@@ -171,15 +146,9 @@ class NetworkApi implements NetworkSource {
 
       log('Response @ $route: ${resp.data}');
 
-      // if (route == 'Login/User') {
-
-      //   return NetResponse.withBool(resp.data);
-
-      // } else if (route == '/api/User/send/loan/otp') {
-
-      //   return NetResponse.withBool(resp.data);
-
-      // }
+      if (route == 'log-in') {
+        return NetResponse.withBool(resp.data);
+      }
 
       // return NetResponse.fromString(resp.data);
 

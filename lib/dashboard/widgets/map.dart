@@ -48,9 +48,11 @@ class _MapBodyState extends State<MapBody> {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute<dynamic>(
-                            builder: (_) =>const SearchPlace(),),);
+                      context,
+                      MaterialPageRoute<dynamic>(
+                        builder: (_) => const SearchPlace(),
+                      ),
+                    );
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 1),
@@ -61,25 +63,24 @@ class _MapBodyState extends State<MapBody> {
                     child: Row(
                       children: [
                         Container(
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: Colors.blue,
-                ),
-              ),
-              child: CircleAvatar(
-                backgroundImage: const AssetImage(
-                  'assets/user-2.png',
-                ),
-                backgroundColor: Colors.grey,
-                radius: 25,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-            ),
-                      
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.blue,
+                            ),
+                          ),
+                          child: CircleAvatar(
+                            backgroundImage: const AssetImage(
+                              'assets/user-2.png',
+                            ),
+                            backgroundColor: Colors.grey,
+                            radius: 25,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                          ),
+                        ),
                         const SizedBox(width: 10),
                         const Expanded(
                           child: Text(
@@ -284,7 +285,6 @@ class _MapBodyState extends State<MapBody> {
                                         );
                                       },
                                       child: Card(
-                                       
                                         elevation: 5,
                                         child: Padding(
                                           padding: const EdgeInsets.all(10),
@@ -358,36 +358,5 @@ class _MapBodyState extends State<MapBody> {
     );
     latitude = position.latitude;
     longitude = position.longitude;
-  }
-
-  void _calculateAndShowRoute() {
-    // Calculate route from bike location to current location
-    // Use a routing service (e.g., Google Directions API)
-    // Then draw the route on the map using polylines
-
-    // Clear existing markers
-    markers
-      ..clear()
-
-      // Add marker for current location
-      ..add(
-        Marker(
-          markerId: const MarkerId('current_location'),
-          position: LatLng(latitude, longitude),
-          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
-        ),
-      )
-
-      // Add marker for bike location
-      ..add(
-        Marker(
-          markerId: const MarkerId('bike_location'),
-          position: LatLng(latitude, longitude),
-          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-        ),
-      );
-
-    // Update the map with the new markers
-    setState(() {});
   }
 }

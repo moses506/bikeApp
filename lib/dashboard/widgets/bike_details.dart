@@ -1,6 +1,5 @@
 import 'package:bicycle_app/dashboard/widgets/search_place.dart';
 import 'package:flutter/material.dart';
-import 'package:lorem_ipsum/lorem_ipsum.dart';
 
 class BikeDetails extends StatelessWidget {
   const BikeDetails({required this.image, super.key});

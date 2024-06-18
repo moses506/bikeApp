@@ -21,7 +21,7 @@ class _CreditCardExampleState extends State<CreditCardExample> {
 
   Future<void> _navigateToNextPage(BuildContext context) async {
     // Show circular progress indicator
-    showDialog(
+    await showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {

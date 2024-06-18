@@ -284,7 +284,7 @@ class AppRepo {
       final response = await _net.post('log-in', body);
 
       if (response.isSuccessful()) {
-        final data = response.data['user_bio_details'];
+        final data = response.data;
 
         final userData = await _db.insertOne(
           _tableUsers,
@@ -295,10 +295,10 @@ class AppRepo {
 
         await _prefs.set(
           _keyUserChanged,
-          oldUserId.toString() != userData['id'].toString(),
+          oldUserId.toString() != userData['userId'].toString(),
         );
 
-        await _prefs.set(_keyUserId, userData['id']);
+        await _prefs.set(_keyUserId, userData['userId']);
 
         await _prefs.set(_keyLoggedIn, true);
 
