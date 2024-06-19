@@ -1,5 +1,4 @@
 import 'package:bicycle_app/login/cubit/login_cubit.dart';
-import 'package:bicycle_app/login/widgets/login2.dart';
 import 'package:bicycle_app/login/widgets/login_body.dart';
 import 'package:flutter/material.dart';
 

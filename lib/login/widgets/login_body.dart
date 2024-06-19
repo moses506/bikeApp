@@ -1,6 +1,6 @@
-import 'package:bicycle_app/dashboard/cubit/cubit.dart';
 import 'package:bicycle_app/home/home.dart';
 import 'package:bicycle_app/login/cubit/cubit.dart';
+import 'package:bicycle_app/login/widgets/register.dart';
 import 'package:bicycle_app/widgets/app_loader.dart';
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_picker_dialog.dart';
@@ -16,10 +16,11 @@ class LoginBody extends StatefulWidget {
 
 class _LoginBodyState extends State<LoginBody> {
   final TextEditingController _username = TextEditingController();
-  Country _selectedCountry = CountryPickerUtils.getCountryByIsoCode('ZM');
-  bool _isLoading = false;
-  final formKey = GlobalKey<FormState>();
 
+  final formKey = GlobalKey<FormState>();
+  final _password = TextEditingController();
+
+  bool _obscured = true;
   @override
   void initState() {
     super.initState();
@@ -47,9 +48,7 @@ class _LoginBodyState extends State<LoginBody> {
         ),
         child: CountryPickerDialog(
           onValuePicked: (Country country) {
-            setState(() {
-              _selectedCountry = country;
-            });
+            setState(() {});
           },
           isSearchable: true,
           itemBuilder: (Country country) => Row(
@@ -86,9 +85,7 @@ class _LoginBodyState extends State<LoginBody> {
     );
 
     if (country != null) {
-      setState(() {
-        _selectedCountry = country;
-      });
+      setState(() {});
     }
   }
 
@@ -146,77 +143,131 @@ class _LoginBodyState extends State<LoginBody> {
                   style: TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 8),
-                Card(
-                  elevation: 5,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: TextFormField(
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
+                // Card(
+                //   elevation: 5,
+                //   child: Padding(
+                //     padding: const EdgeInsets.all(8),
+                //     child: TextFormField(
+                //       style: const TextStyle(
+                //         fontWeight: FontWeight.bold,
+                //         fontSize: 15,
+                //       ),
+                //       keyboardType: TextInputType.phone,
+                //       controller: _username,
+                //       decoration: InputDecoration(
+                //         prefix: GestureDetector(
+                //           onTap: _openCountryPickerDialog,
+                //           child: DecoratedBox(
+                //             decoration: BoxDecoration(
+                //               border: Border(
+                //                 bottom: BorderSide(
+                //                   color: Theme.of(context)
+                //                       .colorScheme
+                //                       .surfaceContainerHighest,
+                //                   width: 1.2,
+                //                 ),
+                //               ),
+                //             ),
+                //             child: Row(
+                //               mainAxisSize: MainAxisSize.min,
+                //               children: [
+                //                 DecoratedBox(
+                //                   decoration: BoxDecoration(
+                //                     border: Border.all(
+                //                       color: Theme.of(context)
+                //                           .colorScheme
+                //                           .tertiary,
+                //                       width: 1.5,
+                //                     ),
+                //                     borderRadius: BorderRadius.circular(4),
+                //                   ),
+                //                   child: ClipRRect(
+                //                     borderRadius: BorderRadius.circular(2),
+                //                     child:
+                //                         CountryPickerUtils.getDefaultFlagImage(
+                //                       _selectedCountry,
+                //                     ),
+                //                   ),
+                //                 ),
+                //                 const SizedBox(width: 8),
+                //                 Text(
+                //                   ' +${_selectedCountry.phoneCode}',
+                //                   style: const TextStyle(fontSize: 16),
+                //                 ),
+                //               ],
+                //             ),
+                //           ),
+                //         ),
+                //         isDense: true,
+                //         hintText: '  Enter Phone Number',
+                //         border: InputBorder.none,
+                //       ),
+                //       validator: (text) {
+                //         if (text == null || text.isEmpty) {
+                //           return 'Phone number is required';
+                //         } else if (!isPhoneNumberValid) {
+                //           return 'Phone number must be 9 digits';
+                //         }
+                //         return null;
+                //       },
+                //     ),
+                //   ),
+                // ),
+                TextFormField(
+                  maxLength: 10,
+                  controller: _username,
+                  textInputAction: TextInputAction.next,
+                  decoration: const InputDecoration(
+                    prefix: Text('26 '),
+                    suffix: Icon(Icons.phone_android),
+                    isDense: true,
+                    hintText: 'Phone',
+                    hintStyle: TextStyle(),
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (text) {
+                    if (text?.isEmpty ?? false) {
+                      return 'Phone is required';
+                    }else if(text!.length< 10){
+                      return 'Phone number too short';
+                    }
+
+                    return null;
+                  },
+                ),
+
+                const SizedBox(height: 10),
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: _password,
+                  obscureText: _obscured,
+                  textInputAction: TextInputAction.done,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    hintText: 'Password',
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscured ? Icons.visibility_off : Icons.visibility,
                       ),
-                      keyboardType: TextInputType.phone,
-                      controller: _username,
-                      decoration: InputDecoration(
-                        prefix: GestureDetector(
-                          onTap: _openCountryPickerDialog,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .surfaceContainerHighest,
-                                  width: 1.2,
-                                ),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .tertiary,
-                                      width: 1.5,
-                                    ),
-                                    borderRadius: BorderRadius.circular(4),
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(2),
-                                    child:
-                                        CountryPickerUtils.getDefaultFlagImage(
-                                      _selectedCountry,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  ' +${_selectedCountry.phoneCode}',
-                                  style: const TextStyle(fontSize: 16),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        isDense: true,
-                        hintText: '  Enter Phone Number',
-                        border: InputBorder.none,
-                      ),
-                      validator: (text) {
-                        if (text == null || text.isEmpty) {
-                          return 'Phone number is required';
-                        } else if (!isPhoneNumberValid) {
-                          return 'Phone number must be 9 digits';
-                        }
-                        return null;
+                      onPressed: () {
+                        setState(() {
+                          _obscured = !_obscured;
+                        });
                       },
                     ),
                   ),
+                  validator: (text) {
+                    if (text?.isEmpty ?? false) {
+                      return 'Password is required';
+                    }
+
+                    return null;
+                  },
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(
+                  height: 10,
+                ),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -236,7 +287,9 @@ class _LoginBodyState extends State<LoginBody> {
                   children: [
                     const Text("You don't have an account? "),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, ReisterClientPage.route());
+                      },
                       child: const Text('Register'),
                     ),
                   ],
@@ -268,7 +321,9 @@ class _LoginBodyState extends State<LoginBody> {
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                 ),
+              const  SizedBox(height: 10,),
               ],
+              
             ),
           ),
         );

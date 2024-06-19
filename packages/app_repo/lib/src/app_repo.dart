@@ -260,10 +260,16 @@ class AppRepo {
   /// Register Client
 
   Future<OpStatus> registerEmployee(JsonMap data) async {
-    final response = await _net.post(
-      'User/create/employer_maintenances',
+    final file= <String,dynamic>{
+      'files':data['files'],
+    };
+    final response = await _net.upload(
+
+      'self/registration',
+      files: file,
       data,
     );
+    print(file);
 
     return OpStatus.fromResponse(response);
   }
